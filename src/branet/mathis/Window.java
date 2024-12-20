@@ -129,34 +129,38 @@ public class Window
 
         frame.getContentPane().removeAll();
 
-        JPanel panelGarage = new JPanel();
-
         JLabel titre = new JLabel("Voici votre garage :");
         titre.setHorizontalAlignment(SwingConstants.CENTER);
-        panelGarage.add(titre, BorderLayout.NORTH);
+        frame.add(titre, BorderLayout.NORTH);
 
-        // Panneau pour les motos
         JPanel listeMotosPanel = new JPanel();
-        listeMotosPanel.setLayout(new GridLayout(garage.size(), 1)); // Une ligne par moto
-        panelGarage.add(new JScrollPane(listeMotosPanel), BorderLayout.CENTER);
+        listeMotosPanel.setLayout(new GridLayout(garage.size(), 1));
+        frame.add(listeMotosPanel);
 
-        // Ajouter chaque moto sous forme de grille
         for (Moto moto : garage) {
-            // Créer un sous-panneau pour chaque moto
             JPanel motoPanel = new JPanel();
-            motoPanel.setLayout(new GridLayout(1, 4)); // Quatre colonnes : nom, caractéristiques, supprimer, modifier
+            motoPanel.setLayout(new GridLayout(1, 4));
 
-            // Ajouter le nom de la moto
-            JLabel motoLabel = new JLabel(moto.getNom());
+            String name = "";
+            if (moto instanceof Yamaha)
+                name += "Yamaha ";
+            else if (moto instanceof Honda)
+                name += "Honda ";
+            else if (moto instanceof Kawasaki)
+                name += "Kawasaki ";
+            else if (moto instanceof Ducati)
+                name += "Ducati ";
+
+            name += moto.getNom();
+
+            JLabel motoLabel = new JLabel(name);
             motoLabel.setHorizontalAlignment(SwingConstants.CENTER);
             motoPanel.add(motoLabel);
 
-            // Bouton "Caractéristiques"
-            JButton btnCaractéristiques = new JButton("Caractéristiques");
-            btnCaractéristiques.addActionListener(e -> afficherFicheProduit(moto, "Garage"));
-            motoPanel.add(btnCaractéristiques);
+            JButton btnCaracteristiques = new JButton("Caracteristiques");
+            btnCaracteristiques.addActionListener(e -> afficherFicheProduit(moto, "Garage"));
+            motoPanel.add(btnCaracteristiques);
 
-            // Bouton "Supprimer"
             JButton btnSupprimer = new JButton("Supprimer");
             btnSupprimer.addActionListener(e -> {
                 garage.remove(moto);
@@ -165,17 +169,17 @@ public class Window
             });
             motoPanel.add(btnSupprimer);
 
-            JButton btnModifier = new JButton("Modifier");motoPanel.add(btnModifier);
+            JButton btnModifier = new JButton("Modifier");
+            motoPanel.add(btnModifier);
             listeMotosPanel.add(motoPanel);
         }
 
         JButton boutonRetour = new JButton("Retour");
         boutonRetour.addActionListener(e -> mainWindow());
-        panelGarage.add(boutonRetour, BorderLayout.SOUTH);
+        frame.add(boutonRetour, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
-
 
     private void quitterApplication()
     {
