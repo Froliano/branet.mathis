@@ -108,7 +108,7 @@ public class Window
 
         JButton retourButton = new JButton("Retour");
         retourButton.addActionListener(e -> mainWindow());
-        frame.getContentPane().add(retourButton, BorderLayout.SOUTH);
+        frame.add(retourButton, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
@@ -122,21 +122,15 @@ public class Window
 
     private void afficherGarage()
     {
-        // Vérifier si le garage est vide
         if (garage.isEmpty()) {
             JOptionPane.showMessageDialog(frame, "Votre garage est vide !");
             return;
         }
 
-        // Effacer le contenu précédent
         frame.getContentPane().removeAll();
 
-        // Créer un panneau principal
         JPanel panelGarage = new JPanel();
-        panelGarage.setLayout(new BorderLayout());
-        frame.getContentPane().add(panelGarage);
 
-        // Titre
         JLabel titre = new JLabel("Voici votre garage :");
         titre.setHorizontalAlignment(SwingConstants.CENTER);
         panelGarage.add(titre, BorderLayout.NORTH);
@@ -171,16 +165,10 @@ public class Window
             });
             motoPanel.add(btnSupprimer);
 
-            // Bouton "Modifier"
-            JButton btnModifier = new JButton("Modifier");
-            //btnModifier.addActionListener(e -> modifierMoto(frame, moto));
-            motoPanel.add(btnModifier);
-
-            // Ajouter le panneau de la moto au panneau principal
+            JButton btnModifier = new JButton("Modifier");motoPanel.add(btnModifier);
             listeMotosPanel.add(motoPanel);
         }
 
-        // Bouton retour
         JButton boutonRetour = new JButton("Retour");
         boutonRetour.addActionListener(e -> mainWindow());
         panelGarage.add(boutonRetour, BorderLayout.SOUTH);
@@ -256,11 +244,11 @@ public class Window
 
         JLabel message = new JLabel("Choisissez votre moto Yamaha !");
         message.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.getContentPane().add(message, BorderLayout.NORTH);
+        frame.add(message, BorderLayout.NORTH);
 
         JPanel panelYamaha = new JPanel();
         panelYamaha.setLayout(new GridLayout(4, 1));
-        frame.getContentPane().add(panelYamaha, BorderLayout.CENTER);
+        frame.add(panelYamaha, BorderLayout.CENTER);
 
         for (Moto moto : yamahaMotos) {
             JButton motoButton = new JButton(moto.getNom());
@@ -270,7 +258,7 @@ public class Window
 
         JButton retourButton = new JButton("Retour");
         retourButton.addActionListener(e -> choixMoto());
-        frame.getContentPane().add(retourButton, BorderLayout.SOUTH);
+        frame.add(retourButton, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
@@ -281,11 +269,11 @@ public class Window
 
         JLabel message = new JLabel("Choisissez votre moto Honda !");
         message.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.getContentPane().add(message, BorderLayout.NORTH);
+        frame.add(message, BorderLayout.NORTH);
 
         JPanel panelHonda = new JPanel();
         panelHonda.setLayout(new GridLayout(3, 1));
-        frame.getContentPane().add(panelHonda, BorderLayout.CENTER);
+        frame.add(panelHonda, BorderLayout.CENTER);
 
         for (Moto moto : hondaMotos) {
             JButton motoButton = new JButton(moto.getNom());
@@ -295,7 +283,7 @@ public class Window
 
         JButton retourButton = new JButton("Retour");
         retourButton.addActionListener(e -> choixMoto());
-        frame.getContentPane().add(retourButton, BorderLayout.SOUTH);
+        frame.add(retourButton, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
@@ -306,11 +294,11 @@ public class Window
 
         JLabel message = new JLabel("Choisissez votre moto Ducati !");
         message.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.getContentPane().add(message, BorderLayout.NORTH);
+        frame.add(message, BorderLayout.NORTH);
 
         JPanel panelDucati = new JPanel();
         panelDucati.setLayout(new GridLayout(3, 1));
-        frame.getContentPane().add(panelDucati, BorderLayout.CENTER);
+        frame.add(panelDucati, BorderLayout.CENTER);
 
         for (Moto moto : ducatiMotos) {
             JButton motoButton = new JButton(moto.getNom());
@@ -320,7 +308,7 @@ public class Window
 
         JButton retourButton = new JButton("Retour");
         retourButton.addActionListener(e -> choixMoto());
-        frame.getContentPane().add(retourButton, BorderLayout.SOUTH);
+        frame.add(retourButton, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
@@ -331,11 +319,11 @@ public class Window
 
         JLabel message = new JLabel("Choisissez votre moto Kawasaki !");
         message.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.getContentPane().add(message, BorderLayout.NORTH);
+        frame.add(message, BorderLayout.NORTH);
 
         JPanel panelKawasaki = new JPanel();
         panelKawasaki.setLayout(new GridLayout(4, 1));
-        frame.getContentPane().add(panelKawasaki, BorderLayout.CENTER);
+        frame.add(panelKawasaki, BorderLayout.CENTER);
 
         for (Moto moto : kawasakiMotos) {
             JButton motoButton = new JButton(moto.getNom());
@@ -345,7 +333,7 @@ public class Window
 
         JButton retourButton = new JButton("Retour");
         retourButton.addActionListener(e -> choixMoto());
-        frame.getContentPane().add(retourButton, BorderLayout.SOUTH);
+        frame.add(retourButton, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
